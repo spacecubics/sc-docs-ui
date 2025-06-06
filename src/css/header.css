@@ -325,3 +325,9 @@ body {
     background: var(--navbar-menu_hover-background);
   }
 }
+
+@media screen and (max-width: 1023.5px) {
+  .navbar-burger {
+    display: none !important;
+  }
+}
