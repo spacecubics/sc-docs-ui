@@ -1,12 +1,10 @@
-name: Build & Release Antora UI
+name: Build Antora UI (reusable)
 
 on:
-  push:
-    tags:
-      - 'v*'
+  workflow_call:
 
 jobs:
-  build-and-release:
+  build-reusable:
     runs-on: ubuntu-latest
 
     steps:
@@ -24,9 +22,9 @@ jobs:
       - name: Build Antora UI bundle
         run: npx gulp bundle
 
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
+      - name: Upload UI bundle artifact
+        uses: actions/upload-artifact@v6
         with:
-          files: build/ui-bundle.zip
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          name: ui-bundle
+          path: build/ui-bundle.zip
+          if-no-files-found: error

@@ -1,0 +1,8 @@
+name: Build Antora UI
+
+on:
+  pull_request:
+
+jobs:
+  build:
+    uses: ./.github/workflows/reuse-build.yml
