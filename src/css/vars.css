@@ -24,9 +24,11 @@
   --body-font-size--print: 0.9375em; /* 15px */
   --body-line-height: 1.15;
   --body-font-color: var(--color-jet-70);
-  --body-font-family: "Roboto", sans-serif;
+  --system-font-family: system-ui, -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, "Noto Sans", "Noto Sans JP", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --system-monospace-font-family: ui-monospace, "SFMono-Regular", "SF Mono", menlo, consolas, "Liberation Mono", monospace;
+  --body-font-family: var(--system-font-family);
   --body-font-weight-bold: 600;
-  --monospace-font-family: "Roboto Mono", monospace;
+  --monospace-font-family: var(--system-monospace-font-family);
   --monospace-font-weight-bold: 600;
   /* base */
   --body-background: var(--color-white);
