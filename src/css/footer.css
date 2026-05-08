@@ -1,13 +1,22 @@
-footer.footer {
-  background-color: var(--footer-background);
+article.doc > footer.footer {
+  background: transparent;
   color: var(--footer-font-color);
   font-size: calc(15 / var(--rem-base) * 1rem);
   line-height: var(--footer-line-height);
-  padding: 1.5rem;
+  margin-top: auto;
+  padding: 2rem 1rem 1rem;
+  text-align: center;
+}
+
+article.doc > footer.footer::before {
+  border-top: 1px solid var(--toolbar-border-color);
+  content: "";
+  display: block;
+  margin-bottom: 1rem;
 }
 
 .footer p {
-  margin: 0.5rem 0;
+  margin: 0;
 }
 
 .footer a {

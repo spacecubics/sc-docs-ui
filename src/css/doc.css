@@ -1,16 +1,20 @@
 .doc {
   color: var(--doc-font-color);
+  display: flex;
+  flex-direction: column;
   font-size: var(--doc-font-size);
   hyphens: auto;
   line-height: var(--doc-line-height);
   margin: var(--doc-margin);
   max-width: var(--doc-max-width);
-  padding: 0 1rem 4rem;
+  min-height: calc(var(--body-min-height) - var(--toolbar-height));
+  padding: 0 1rem;
 }
 
 @media screen and (min-width: 1024px) {
   .doc {
     flex: auto;
+    flex-direction: column;
     font-size: var(--doc-font-size--desktop);
     margin: var(--doc-margin--desktop);
     max-width: var(--doc-max-width--desktop);
