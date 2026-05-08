@@ -484,14 +484,57 @@
 .doc .image > img,
 .doc .image > object,
 .doc .image > svg {
+  background-color: var(--image-transparent-background-color);
+  background-image: var(--image-transparent-background);
+  background-position: 0 0, 0.5rem 0.5rem;
+  background-size: var(--image-transparent-background-size) var(--image-transparent-background-size);
   display: inline-block;
   height: auto;
   max-width: 100%;
   vertical-align: middle;
 }
 
+.doc .imageblock img,
+.doc .image > img,
+.doc .image a > img {
+  cursor: zoom-in;
+}
+
 .doc .image:not(.left):not(.right) > img {
   margin-top: -0.2em;
+}
+
+.image-lightbox {
+  align-items: center;
+  background: rgba(0, 0, 0, 0.88);
+  cursor: zoom-out;
+  display: none;
+  inset: 0;
+  justify-content: center;
+  padding: 2rem;
+  position: fixed;
+  z-index: 1000;
+}
+
+.image-lightbox.is-active {
+  display: flex;
+}
+
+.image-lightbox img {
+  background-color: var(--image-transparent-background-color);
+  background-image: var(--image-transparent-background);
+  background-position: 0 0, 0.5rem 0.5rem;
+  background-size: var(--image-transparent-background-size) var(--image-transparent-background-size);
+  box-shadow: 0 1.25rem 3rem rgba(0, 0, 0, 0.35);
+  cursor: auto;
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+html.is-clipped--image-lightbox,
+html.is-clipped--image-lightbox body {
+  overflow: hidden;
 }
 
 .doc .videoblock iframe,
