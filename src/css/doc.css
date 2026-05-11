@@ -547,8 +547,7 @@
   transform-origin: center center;
 }
 
-html.is-clipped--image-lightbox,
-html.is-clipped--image-lightbox body {
+html.is-clipped--image-lightbox {
   overflow: hidden;
 }
 
