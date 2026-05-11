@@ -4,6 +4,9 @@
 
 .toc.sidebar .toc-menu {
   margin-right: 0.75rem;
+  max-height: var(--toc-height);
+  overflow-y: auto;
+  overscroll-behavior: none;
   position: sticky;
   top: var(--toc-top);
 }
@@ -17,13 +20,6 @@
   padding-bottom: 0.25rem;
 }
 
-.toc.sidebar .toc-menu h3 {
-  display: flex;
-  flex-direction: column;
-  height: 2.5rem;
-  justify-content: flex-end;
-}
-
 .toc .toc-menu ul {
   font-size: calc(15 / var(--rem-base) * 1rem);
   line-height: var(--toc-line-height);
@@ -32,21 +28,23 @@
   padding: 0;
 }
 
-.toc.sidebar .toc-menu ul {
-  max-height: var(--toc-height);
-  overflow-y: auto;
-  overscroll-behavior: none;
-}
-
 @supports (scrollbar-width: none) {
-  .toc.sidebar .toc-menu ul {
+  .toc.sidebar .toc-menu {
     scrollbar-width: none;
   }
 }
 
-.toc .toc-menu ul::-webkit-scrollbar {
+.toc .toc-menu::-webkit-scrollbar {
   width: 0;
   height: 0;
+}
+
+.toc .toc-section + .toc-section {
+  margin-top: 0.9rem;
+}
+
+.toc .toc-section:first-child h3 {
+  padding-top: 2rem;
 }
 
 @media screen and (min-width: 1024px) {
