@@ -254,8 +254,22 @@
   margin-top: 1.5rem;
 }
 
+.doc .tablecontainer {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  position: relative;
+  -webkit-overflow-scrolling: touch;
+}
+
 .doc table.tableblock {
   font-size: calc(15 / var(--rem-base) * 1rem);
+}
+
+.doc .tablecontainer > table.tableblock {
+  min-width: 100%;
+  width: max-content;
 }
 
 .doc p.tableblock + p.tableblock {
