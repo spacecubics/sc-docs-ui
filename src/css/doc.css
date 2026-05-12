@@ -263,6 +263,34 @@
   -webkit-overflow-scrolling: touch;
 }
 
+.doc .tablecontainer.is-scrollable::after {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 999px;
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.12);
+  color: var(--doc-font-color);
+  content: "Scroll horizontally";
+  font-size: calc(12 / var(--rem-base) * 1rem);
+  font-style: normal;
+  font-weight: var(--body-font-weight-bold);
+  letter-spacing: 0.01em;
+  left: 50%;
+  padding: 0.375rem 0.75rem;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 180ms ease, transform 180ms ease;
+  white-space: nowrap;
+  z-index: 3;
+}
+
+.doc .tablecontainer.is-scrolled::after {
+  opacity: 0;
+  transform: translate(-50%, calc(-50% + 0.5rem));
+}
+
 .doc table.tableblock {
   font-size: calc(15 / var(--rem-base) * 1rem);
 }
