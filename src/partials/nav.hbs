@@ -1,5 +1,8 @@
 <div class="nav-container"{{#if page.component}} data-component="{{page.component.name}}" data-version="{{page.version}}"{{/if}}>
   <aside class="nav">
+    <a class="nav-brand" href="{{{or site.url siteRootPath}}}">
+      <img class="nav-brand-logo" src="{{{uiRootPath}}}/img/sc-logo.png" alt="{{site.title}}">
+    </a>
     <div class="panels">
 {{> nav-menu}}
 {{> nav-explore}}
