@@ -46,9 +46,11 @@ body.-toc aside.toc.sidebar {
     display: block;
   }
 
+  aside.toc.embedded {
+    display: block;
+  }
+
   aside.toc.sidebar {
-    margin: 1rem 2rem 0;
-    max-width: none;
-    min-width: 0;
+    display: none;
   }
 }

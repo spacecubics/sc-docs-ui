@@ -94,14 +94,3 @@
 .sidebar.toc .toc-menu a:focus {
   background: var(--panel-background);
 }
-
-@media screen and (min-width: 1024px) and (max-width: 1279.5px) {
-  .toc.sidebar .toc-menu {
-    margin-right: 0;
-    position: static;
-  }
-
-  .toc.sidebar .toc-menu ul {
-    max-height: none;
-  }
-}
