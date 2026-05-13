@@ -1,11 +1,15 @@
 <main class="article">
-{{> toolbar}}
-  <div class="content">
+  <div class="content-frame">
+    {{> toolbar}}
+    <div class="content">
 {{#if (eq page.layout '404')}}
 {{> article-404}}
 {{else}}
 {{> toc}}
+      <div class="article-panel">
 {{> article}}
+      </div>
 {{/if}}
+    </div>
   </div>
 </main>
