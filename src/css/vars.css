@@ -17,6 +17,18 @@
   --color-jet-70: #222;
   --color-jet-80: #191919;
   --color-black: #000;
+
+  /* dark colors */
+  --color-dark-10: #f9fafb;
+  --color-dark-20: #e5e7eb;
+  --color-dark-30: #d1d5db;
+  --color-dark-40: #9ca3af;
+  --color-dark-50: #6b7280;
+  --color-dark-60: #4b5563;
+  --color-dark-70: #374151;
+  --color-dark-80: #1f2937;
+  --color-dark-90: #111827;
+
   /* fonts */
   --rem-base: 18; /* used to compute rem value from desired pixel value (e.g., calc(18 / var(--rem-base) * 1rem) = 18px) */
   --body-font-size: 1.0625em; /* 17px */

@@ -5,5 +5,13 @@
   {{/with}}
 {{> breadcrumbs}}
 {{> page-versions}}
+<div class="toolbar-spacer"></div>
+<div class="toolbar-theme-switcher hide-for-print">
+  <label for="theme-switcher">Theme</label>
+  <select id="theme-switcher" data-theme-switcher aria-label="Theme">
+    <option value="light">Light</option>
+    <option value="dark">Dark</option>
+  </select>
+</div>
 {{> edit-this-page}}
 </div>

@@ -1,0 +1,88 @@
+:root {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --body-background: var(--color-dark-90);
+  --body-font-color: var(--color-dark-30);
+  --article-background: var(--color-dark-90);
+  --content-frame-background: var(--color-dark-90);
+  --toc-embedded-background: var(--color-dark-90);
+  --panel-background: var(--color-dark-80);
+  --panel-border-color: var(--color-dark-70);
+  --toolbar-background: var(--color-dark-90);
+  --toolbar-border-color: var(--color-dark-70);
+  --toolbar-font-color: var(--color-dark-30);
+  --toolbar-muted-color: var(--color-dark-40);
+  --page-version-menu-background: var(--color-dark-80);
+  --page-version-missing-font-color: var(--color-dark-40);
+  --doc-font-color: var(--color-dark-30);
+  --heading-font-color: var(--color-dark-10);
+  --section-divider-color: var(--color-dark-70);
+  --link-font-color: #93c5fd;
+  --link_hover-font-color: #bfdbfe;
+  --abstract-background: var(--color-dark-80);
+  --abstract-font-color: var(--color-dark-30);
+  --abstract-border-color: var(--color-dark-70);
+  --admonition-background: var(--color-dark-80);
+  --caption-font-color: var(--color-dark-40);
+  --code-background: var(--color-dark-90);
+  --code-font-color: var(--color-dark-20);
+  --example-background: var(--color-dark-80);
+  --example-border-color: var(--color-dark-60);
+  --kbd-background: var(--color-dark-80);
+  --kbd-border-color: var(--color-dark-70);
+  --pre-background: var(--color-dark-80);
+  --pre-border-color: var(--color-dark-70);
+  --pre-annotation-font-color: var(--color-dark-40);
+  --quote-background: var(--color-dark-80);
+  --quote-border-color: var(--color-dark-70);
+  --quote-font-color: var(--color-dark-30);
+  --quote-attribution-font-color: var(--color-dark-40);
+  --sidebar-background: var(--color-dark-80);
+  --table-border-color: var(--color-dark-70);
+  --table-stripe-background: var(--color-dark-80);
+  --table-footer-background: linear-gradient(to bottom, var(--color-dark-80) 0%, var(--color-dark-90) 100%);
+  --toc-font-color: var(--color-dark-30);
+  --toc-heading-font-color: var(--color-dark-30);
+  --toc-border-color: var(--color-dark-70);
+  --footer-background: var(--color-dark-80);
+  --footer-font-color: var(--color-dark-30);
+  --footer-link-font-color: var(--color-dark-10);
+  --scrollbar-track-color: var(--color-dark-90);
+  --scrollbar-thumb-color: var(--color-dark-70);
+  --scrollbar_hover-thumb-color: var(--color-dark-60);
+  --scroll-hint-background: rgba(31, 41, 55, 0.92);
+  --scroll-hint-border-color: var(--color-dark-70);
+  --scroll-hint-box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.35);
+  --scroll-hint-font-color: var(--color-dark-20);
+}
+
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+.toolbar-theme-switcher {
+  align-items: center;
+  display: flex;
+  gap: 0.35rem;
+  padding: 0 0.5rem;
+}
+
+.toolbar-theme-switcher label {
+  color: var(--toolbar-muted-color);
+  font-size: calc(13 / var(--rem-base) * 1rem);
+}
+
+.toolbar-theme-switcher select {
+  background: var(--panel-background);
+  border: 1px solid var(--panel-border-color);
+  border-radius: 0.25rem;
+  color: var(--toolbar-font-color);
+  font: inherit;
+  font-size: calc(13 / var(--rem-base) * 1rem);
+  height: calc(var(--toolbar-height) * 0.62);
+  padding: 0 0.35rem;
+}
