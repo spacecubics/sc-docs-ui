@@ -129,8 +129,7 @@
   /* dimensions and positioning */
   --toolbar-height: calc(45 / var(--rem-base) * 1rem);
   --drawer-height: var(--toolbar-height);
-  --body-top: 0;
-  --body-min-height: calc(100vh - var(--body-top));
+  --body-min-height: 100vh;
   --nav-height: calc(var(--body-min-height) - var(--toolbar-height));
   --nav-height--desktop: var(--body-min-height);
   --nav-panel-menu-height: calc(100% - var(--drawer-height));
