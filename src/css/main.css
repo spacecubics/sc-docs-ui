@@ -1,9 +1,9 @@
 .article {
-  background: var(--color-smoke-30);
+  background: var(--article-background);
 }
 
 .content-frame {
-  background: var(--color-white);
+  background: var(--content-frame-background);
   max-width: 100%;
   width: 100%;
 }
@@ -27,7 +27,7 @@ body.-toc aside.toc.sidebar {
 }
 
 aside.toc.embedded {
-  background: var(--color-white);
+  background: var(--toc-embedded-background);
 }
 
 @media screen and (min-width: 1024px) {

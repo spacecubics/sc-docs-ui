@@ -265,11 +265,11 @@
 
 .doc .tablecontainer.is-scrollable::after {
   backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, 0.82);
-  border: 1px solid rgba(255, 255, 255, 0.65);
+  background: var(--scroll-hint-background);
+  border: 1px solid var(--scroll-hint-border-color);
   border-radius: 999px;
-  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.12);
-  color: var(--doc-font-color);
+  box-shadow: var(--scroll-hint-box-shadow);
+  color: var(--scroll-hint-font-color);
   content: "Scroll horizontally";
   font-size: calc(12 / var(--rem-base) * 1rem);
   font-style: normal;
