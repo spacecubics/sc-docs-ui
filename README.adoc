@@ -49,6 +49,21 @@ NOTE: The `snapshot` flag tells Antora to fetch the UI when the `--fetch` comman
 This setting is required because updates to the UI bundle are pushed to the same URL.
 If the URL were to be unique, this setting would not be required.
 
+=== Select a Site Variant
+
+The existing Space Cubics styling is the default.
+To distinguish an internal documentation site, set `site.keys.ui_variant` in the Antora playbook:
+
+[source,yaml]
+----
+site:
+  keys:
+    ui_variant: internal
+----
+
+The `internal` variant uses an earthy olive navigation pane while retaining the shared layout and branding.
+If `ui_variant` is absent or has another value, the default styling is used.
+
 Read on to learn how to customize the default UI for your own documentation.
 
 == Development Quickstart

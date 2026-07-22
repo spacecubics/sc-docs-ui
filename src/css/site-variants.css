@@ -1,0 +1,7 @@
+:root[data-site-variant="internal"] {
+  --nav-background: #62682f;
+}
+
+:root[data-site-variant="internal"][data-theme="dark"] {
+  --nav-background: #222419;
+}
