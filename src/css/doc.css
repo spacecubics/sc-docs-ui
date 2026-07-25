@@ -256,18 +256,49 @@
 
 .doc .tablecontainer {
   max-width: 100%;
+  position: relative;
+}
+
+.doc .tablescroll {
   overflow-x: auto;
   overflow-y: hidden;
   overscroll-behavior-x: contain;
-  position: relative;
   -webkit-overflow-scrolling: touch;
+}
+
+.doc .tablecontainer::before,
+.doc .tablecontainer::after {
+  bottom: 0;
+  content: "";
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  transition: opacity 180ms ease;
+  width: 2rem;
+  z-index: 2;
+}
+
+.doc .tablecontainer::before {
+  background: linear-gradient(to right, var(--body-background), transparent);
+  left: 0;
+}
+
+.doc .tablecontainer::after {
+  background: linear-gradient(to left, var(--body-background), transparent);
+  right: 0;
+}
+
+.doc .tablecontainer.can-scroll-left::before,
+.doc .tablecontainer.can-scroll-right::after {
+  opacity: 1;
 }
 
 .doc table.tableblock {
   font-size: calc(15 / var(--rem-base) * 1rem);
 }
 
-.doc .tablecontainer > table.tableblock {
+.doc .tablescroll > table.tableblock {
   min-width: 100%;
   width: max-content;
 }
