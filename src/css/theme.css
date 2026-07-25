@@ -54,10 +54,6 @@
   --scrollbar-track-color: var(--color-dark-90);
   --scrollbar-thumb-color: var(--color-dark-70);
   --scrollbar_hover-thumb-color: var(--color-dark-60);
-  --scroll-hint-background: rgba(31, 41, 55, 0.92);
-  --scroll-hint-border-color: var(--color-dark-70);
-  --scroll-hint-box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.35);
-  --scroll-hint-font-color: var(--color-dark-20);
 }
 
 .toolbar-spacer {
