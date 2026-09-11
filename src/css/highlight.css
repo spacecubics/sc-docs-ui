@@ -1,86 +1,149 @@
-/*! Adapted from the GitHub style by Vasily Polovnyov <vast@whiteants.net> */
-.hljs-comment,
-.hljs-quote {
-  color: #998;
-  font-style: italic;
+/*!
+BSD 3-Clause License
+
+Copyright (c) 2006, Ivan Sagalaev.
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+* Redistributions of source code must retain the above copyright notice, this
+  list of conditions and the following disclaimer.
+
+* Redistributions in binary form must reproduce the above copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+
+* Neither the name of the copyright holder nor the names of its
+  contributors may be used to endorse or promote products derived from
+  this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+
+/*!
+  Theme: GitHub Adaptive (Light & Dark)
+  Description: A combination of @Hirse's GitHub Light and Dark themes that switches based on the user's system preference.
+  Authors: github.com, @Hirse
+*/
+:root {
+  color-scheme: light dark;
 }
 
+.hljs.light {
+  color-scheme: light;
+}
+
+.hljs.dark {
+  color-scheme: dark;
+}
+
+.hljs {
+  color: light-dark(#24292e, #c9d1d9);
+  background: light-dark(#fff, #0d1117);
+}
+
+.hljs-doctag,
 .hljs-keyword,
-.hljs-selector-tag,
-.hljs-subst {
-  color: #333;
-  font-weight: var(--monospace-font-weight-bold);
-}
-
-.hljs-number,
-.hljs-literal,
-.hljs-variable,
+.hljs-meta .hljs-keyword,
+.hljs-template-tag,
 .hljs-template-variable,
-.hljs-tag .hljs-attr {
-  color: #008080;
-}
-
-.hljs-string,
-.hljs-doctag {
-  color: #d14;
+.hljs-type,
+.hljs-variable.language_ {
+  color: light-dark(#d73a49, #ff7b72);
 }
 
 .hljs-title,
-.hljs-section,
+.hljs-title.class_,
+.hljs-title.class_.inherited__,
+.hljs-title.function_ {
+  color: light-dark(#6f42c1, #d2a8ff);
+}
+
+.hljs-attr,
+.hljs-attribute,
+.hljs-literal,
+.hljs-meta,
+.hljs-number,
+.hljs-operator,
+.hljs-variable,
+.hljs-selector-attr,
+.hljs-selector-class,
 .hljs-selector-id {
-  color: #900;
-  font-weight: var(--monospace-font-weight-bold);
-}
-
-.hljs-subst {
-  font-weight: normal;
-}
-
-.hljs-type,
-.hljs-class .hljs-title {
-  color: #458;
-  font-weight: var(--monospace-font-weight-bold);
-}
-
-.hljs-tag,
-.hljs-name,
-.hljs-attribute {
-  color: #000080;
-  font-weight: normal;
+  color: light-dark(#005cc5, #79c0ff);
 }
 
 .hljs-regexp,
-.hljs-link {
-  color: #009926;
-}
-
-.hljs-symbol,
-.hljs-bullet {
-  color: #990073;
+.hljs-string,
+.hljs-meta .hljs-string {
+  color: light-dark(#032f62, #a5d6ff);
 }
 
 .hljs-built_in,
-.hljs-builtin-name {
-  color: #0086b3;
+.hljs-symbol {
+  color: light-dark(#e36209, #ffa657);
 }
 
-.hljs-meta {
-  color: #999;
-  font-weight: var(--monospace-font-weight-bold);
+.hljs-comment,
+.hljs-code,
+.hljs-formula {
+  color: light-dark(#6a737d, #8b949e);
 }
 
-.hljs-deletion {
-  background: #fdd;
+.hljs-name,
+.hljs-quote,
+.hljs-selector-tag,
+.hljs-selector-pseudo {
+  color: light-dark(#22863a, #7ee787);
 }
 
-.hljs-addition {
-  background: #dfd;
+.hljs-subst {
+  color: light-dark(#24292e, #c9d1d9);
+}
+
+.hljs-section {
+  color: light-dark(#005cc5, #1f6feb);
+  font-weight: bold;
+}
+
+.hljs-bullet {
+  color: light-dark(#735c0f, #f2cc60);
 }
 
 .hljs-emphasis {
+  color: light-dark(#24292e, #c9d1d9);
   font-style: italic;
 }
 
 .hljs-strong {
-  font-weight: var(--monospace-font-weight-bold);
+  color: light-dark(#24292e, #c9d1d9);
+  font-weight: bold;
+}
+
+.hljs-addition {
+  color: light-dark(#22863a, #aff5b4);
+  background-color: light-dark(#f0fff4, #033a16);
+}
+
+.hljs-deletion {
+  color: light-dark(#b31d28, #ffdcd7);
+  background-color: light-dark(#ffeef0, #67060c);
+}
+
+.hljs-char.escape_,
+.hljs-link,
+.hljs-params,
+.hljs-property,
+.hljs-punctuation,
+.hljs-tag {
+  /* purposely ignored */
 }
