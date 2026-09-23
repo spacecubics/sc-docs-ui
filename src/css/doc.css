@@ -267,6 +267,11 @@
   -webkit-overflow-scrolling: touch;
 }
 
+.doc .tablescroll:focus {
+  outline: 2px solid var(--link-font-color);
+  outline-offset: -2px;
+}
+
 .doc .tablecontainer::before,
 .doc .tablecontainer::after {
   bottom: 0;

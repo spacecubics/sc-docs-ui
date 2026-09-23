@@ -62,9 +62,23 @@
 
   .doc {
     color: inherit;
+    display: block;
     margin: auto;
     max-width: none;
     padding-bottom: 2rem;
+  }
+
+  .doc .tablescroll {
+    overflow: visible;
+  }
+
+  .doc .tablescroll:focus {
+    outline: none;
+  }
+
+  .doc .tablecontainer::before,
+  .doc .tablecontainer::after {
+    display: none;
   }
 
   .doc .admonitionblock td.icon {

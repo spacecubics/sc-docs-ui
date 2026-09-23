@@ -7,17 +7,21 @@
   var tables = [].slice.call(article.querySelectorAll('table.tableblock'))
   if (!tables.length) return
 
-  var scrollers = new Set()
+  var scrollers = new Map()
+  var resizeObserver = window.ResizeObserver && new window.ResizeObserver(updateScrollableStates)
 
-  tables.forEach(function (table) {
+  tables.forEach(function (table, index) {
     var scroller = ensureTableScroller(table)
 
     if (!scrollers.has(scroller)) {
-      scrollers.add(scroller)
+      var caption = table.caption && table.caption.textContent.trim()
+      scrollers.set(scroller, caption || 'Table ' + (index + 1))
       scroller.addEventListener('scroll', function () {
         updateScrollableState(scroller)
       })
+      if (resizeObserver) resizeObserver.observe(scroller)
     }
+    if (resizeObserver) resizeObserver.observe(table)
   })
 
   window.addEventListener('resize', updateScrollableStates)
@@ -41,7 +45,7 @@
   }
 
   function updateScrollableStates () {
-    scrollers.forEach(function (scroller) {
+    scrollers.forEach(function (label, scroller) {
       updateScrollableState(scroller)
     })
   }
@@ -51,6 +55,16 @@
     var isScrollable = maxScrollLeft > 1
     var canScrollLeft = scroller.scrollLeft > 1
     var canScrollRight = scroller.scrollLeft < maxScrollLeft - 1
+
+    if (isScrollable) {
+      scroller.setAttribute('tabindex', '0')
+      scroller.setAttribute('role', 'region')
+      scroller.setAttribute('aria-label', scrollers.get(scroller))
+    } else {
+      scroller.removeAttribute('tabindex')
+      scroller.removeAttribute('role')
+      scroller.removeAttribute('aria-label')
+    }
 
     scroller.parentNode.classList.toggle('can-scroll-left', isScrollable && canScrollLeft)
     scroller.parentNode.classList.toggle('can-scroll-right', isScrollable && canScrollRight)
