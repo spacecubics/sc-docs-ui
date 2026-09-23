@@ -307,6 +307,11 @@
   font-size: inherit;
 }
 
+.doc table.tableblock a:not(.nobreak),
+.doc table.tableblock :not(pre) > code:not(.nobreak) {
+  overflow-wrap: anywhere;
+}
+
 .doc td.tableblock > .content {
   word-wrap: anywhere; /* aka overflow-wrap; used when hyphens are disabled or aren't sufficient */
 }
