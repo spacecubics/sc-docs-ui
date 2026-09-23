@@ -299,11 +299,6 @@
   font-size: calc(15 / var(--rem-base) * 1rem);
 }
 
-.doc .tablescroll > table.tableblock {
-  min-width: 100%;
-  width: max-content;
-}
-
 .doc p.tableblock + p.tableblock {
   margin-top: 0.5rem;
 }
