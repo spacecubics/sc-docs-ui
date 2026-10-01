@@ -267,6 +267,11 @@
   -webkit-overflow-scrolling: touch;
 }
 
+.doc .tablescroll:focus {
+  outline: 2px solid var(--link-font-color);
+  outline-offset: -2px;
+}
+
 .doc .tablecontainer::before,
 .doc .tablecontainer::after {
   bottom: 0;
@@ -299,17 +304,17 @@
   font-size: calc(15 / var(--rem-base) * 1rem);
 }
 
-.doc .tablescroll > table.tableblock {
-  min-width: 100%;
-  width: max-content;
-}
-
 .doc p.tableblock + p.tableblock {
   margin-top: 0.5rem;
 }
 
 .doc table.tableblock pre {
   font-size: inherit;
+}
+
+.doc table.tableblock a:not(.nobreak),
+.doc table.tableblock :not(pre) > code:not(.nobreak) {
+  overflow-wrap: anywhere;
 }
 
 .doc td.tableblock > .content {
