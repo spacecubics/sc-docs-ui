@@ -16,7 +16,13 @@
   lightbox.setAttribute('aria-hidden', 'true')
   var closeTimer
   var activeSourceImage
+  var parentDialog
+  var parentPanel
+  var previousFocus
   var animationDuration = 360
+  lightbox.tabIndex = 0
+  lightbox.setAttribute('role', 'dialog')
+  lightbox.setAttribute('aria-label', 'Image viewer')
 
   var lightboxImage = document.createElement('img')
   lightboxImage.alt = ''
@@ -35,17 +41,30 @@
   })
 
   window.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && lightbox.classList.contains('is-active')) closeLightbox()
+    if (!parentDialog && e.key === 'Escape' && lightbox.classList.contains('is-active')) closeLightbox()
+  })
+
+  document.addEventListener('table-lightbox:restore', function (e) {
+    if (e.target === parentDialog) closeLightbox(true)
   })
 
   function openLightbox (img) {
     window.clearTimeout(closeTimer)
     activeSourceImage = img
+    previousFocus = document.activeElement
+    parentDialog = img.closest('.table-lightbox[open]')
+    if (parentDialog) {
+      parentPanel = parentDialog.querySelector('.table-lightbox-panel')
+      parentDialog.appendChild(lightbox)
+      parentPanel.inert = true
+      parentDialog.addEventListener('cancel', cancelImage, true)
+    }
     lightboxImage.src = img.currentSrc || img.src
     lightboxImage.alt = img.alt || ''
     lightbox.classList.add('is-active')
     lightbox.setAttribute('aria-hidden', 'false')
     html.classList.add('is-clipped--image-lightbox')
+    lightbox.focus({ preventScroll: true })
     if (lightboxImage.complete) {
       animateLightboxImage(img)
     } else {
@@ -56,19 +75,38 @@
     }
   }
 
-  function closeLightbox () {
+  function cancelImage (e) {
+    e.preventDefault()
+    e.stopImmediatePropagation()
+    if (lightbox.classList.contains('is-active')) closeLightbox()
+  }
+
+  function closeLightbox (immediate) {
     var sourceImage = activeSourceImage
     lightbox.classList.remove('is-active')
     lightbox.setAttribute('aria-hidden', 'true')
     html.classList.remove('is-clipped--image-lightbox')
-    closeTimer = window.setTimeout(function () {
+    window.clearTimeout(closeTimer)
+    function finishClose () {
       if (!lightbox.classList.contains('is-active')) {
         lightboxImage.removeAttribute('src')
         lightboxImage.style.transform = ''
         lightboxImage.style.transition = ''
+        if (parentDialog) {
+          parentDialog.removeEventListener('cancel', cancelImage, true)
+          parentPanel.inert = false
+          document.body.appendChild(lightbox)
+          parentDialog = parentPanel = undefined
+        }
+        if (previousFocus && previousFocus.isConnected) previousFocus.focus({ preventScroll: true })
       }
-    }, animationDuration)
-    if (sourceImage) animateLightboxImage(sourceImage, true)
+    }
+    if (immediate === true) {
+      finishClose()
+    } else {
+      closeTimer = window.setTimeout(finishClose, animationDuration)
+      if (sourceImage) animateLightboxImage(sourceImage, true)
+    }
   }
 
   function animateLightboxImage (img, isClosing) {
