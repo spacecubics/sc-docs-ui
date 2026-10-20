@@ -16,10 +16,15 @@
 
   function jumpToAnchor (e) {
     if (e) {
-      if (e.altKey || e.ctrlKey) return
-      window.location.hash = '#' + this.id
+      if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return
       e.preventDefault()
     }
+    // Let a modal handle its own targets or restore the document first.
+    if (!document.dispatchEvent(new window.CustomEvent('doc:fragment-jump', {
+      cancelable: true,
+      detail: { target: this, updateHash: !!e },
+    }))) return
+    if (e) window.location.hash = '#' + this.id
     var y = computePosition(this, 0) - toolbar.getBoundingClientRect().bottom
     var instant = e === false && supportsScrollToOptions
     instant ? window.scrollTo({ left: 0, top: y, behavior: 'instant' }) : window.scrollTo(0, y)

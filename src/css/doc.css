@@ -272,6 +272,117 @@
   outline-offset: -2px;
 }
 
+.table-expand,
+.table-lightbox-close {
+  background: var(--body-background);
+  border: 1px solid var(--panel-border-color);
+  border-radius: 0.25rem;
+  color: var(--doc-font-color);
+  cursor: pointer;
+  font: inherit;
+  padding: 0.35rem 0.65rem;
+}
+
+.table-expand {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  position: absolute;
+  right: 0.25rem;
+  top: 0.25rem;
+  z-index: 3;
+}
+
+.table-expand:focus-visible,
+.table-lightbox-close:focus-visible,
+.table-lightbox-content:focus-visible {
+  outline: 2px solid var(--link-font-color);
+  outline-offset: -2px;
+}
+
+.table-lightbox {
+  background: transparent;
+  border: 0;
+  box-sizing: border-box;
+  height: 100%;
+  inset: 0;
+  margin: 0;
+  max-height: none;
+  max-width: none;
+  padding: 1rem;
+  width: 100%;
+}
+
+.table-lightbox[open] {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.table-lightbox::backdrop {
+  background: rgba(16, 18, 22, 0.28);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  animation: table-backdrop-in 360ms ease both;
+}
+
+.table-lightbox.is-closing::backdrop {
+  animation: table-backdrop-out 280ms cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.table-lightbox-panel {
+  background: var(--body-background);
+  border-radius: 0.5rem;
+  box-shadow: 0 1.25rem 3rem rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+  max-width: 96rem;
+  min-width: 0;
+  padding: 1rem;
+  width: 100%;
+}
+
+.table-lightbox-close {
+  align-self: flex-end;
+  flex-shrink: 0;
+  margin-bottom: 0.5rem;
+}
+
+.doc.table-lightbox-content {
+  display: block;
+  margin: 0;
+  max-width: none;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: 0;
+}
+
+.doc.table-lightbox-content > table.tableblock {
+  margin: 0;
+}
+
+html.is-clipped--table-lightbox {
+  overflow: hidden;
+}
+
+@keyframes table-backdrop-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes table-backdrop-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .table-lightbox::backdrop {
+    animation: none;
+  }
+}
+
 .doc .tablecontainer::before,
 .doc .tablecontainer::after {
   bottom: 0;
