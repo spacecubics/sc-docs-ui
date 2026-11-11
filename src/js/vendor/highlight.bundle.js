@@ -41,7 +41,8 @@
         { className: 'comment', begin: '^###', end: '$' },
         {
           className: 'meta',
-          begin: '^[$#](?= )',
+          // Keep the prompt prefix in sync with the clipboard extractor.
+          begin: '^[\\w./:@~[\\]-]*[$#](?= )',
           starts: { end: '$', subLanguage: 'bash' },
         },
       ],
