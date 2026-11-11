@@ -1,7 +1,9 @@
 ;(function () {
   'use strict'
 
-  var CMD_RX = /^[$#] (\S[^\\\n]*(\\\n(?![$#] )[^\\\n]*)*)(?=\n|$)/gm
+  // Keep the prompt prefix in sync with the console highlighter.
+  var PROMPT = '[\\w./:@~[\\]-]*[$#] '
+  var CMD_RX = new RegExp('^' + PROMPT + '(\\S[^\\\\\\n]*(\\\\\\n(?!' + PROMPT + ')[^\\\\\\n]*)*)(?=\\n|$)', 'gm')
   var COMMENT_RX = /^###[^\n]*(?:\n|$)/gm
   var LINE_CONTINUATION_RX = /( ) *\\\n *|\\\n( ?) */g
   var TRAILING_SPACE_RX = / +$/gm
@@ -19,7 +21,7 @@
         ;(lang = document.createElement('span')).className = 'source-lang'
         lang.appendChild(document.createTextNode(language))
       }
-    } else if (pre.innerText.startsWith('$ ')) {
+    } else if (/^[\w./:@~[\]-]*\$ /.test(pre.innerText)) {
       var block = pre.parentNode.parentNode
       block.classList.remove('literalblock')
       block.classList.add('listingblock')
