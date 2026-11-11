@@ -1,7 +1,8 @@
 ;(function () {
   'use strict'
 
-  var CMD_RX = /^\$ (\S[^\\\n]*(\\\n(?!\$ )[^\\\n]*)*)(?=\n|$)/gm
+  var CMD_RX = /^[$#] (\S[^\\\n]*(\\\n(?![$#] )[^\\\n]*)*)(?=\n|$)/gm
+  var COMMENT_RX = /^###[^\n]*(?:\n|$)/gm
   var LINE_CONTINUATION_RX = /( ) *\\\n *|\\\n( ?) */g
   var TRAILING_SPACE_RX = / +$/gm
 
@@ -59,6 +60,7 @@
   })
 
   function extractCommands (text) {
+    text = text.replace(COMMENT_RX, '')
     var cmds = []
     var m
     while ((m = CMD_RX.exec(text))) cmds.push(m[1].replace(LINE_CONTINUATION_RX, '$1$2'))
@@ -67,7 +69,7 @@
 
   function writeToClipboard (code) {
     var text = code.innerText.replace(TRAILING_SPACE_RX, '')
-    if (code.dataset.lang === 'console' && text.startsWith('$ ')) text = extractCommands(text)
+    if (code.dataset.lang === 'console') text = extractCommands(text) || text
     window.navigator.clipboard.writeText(text).then(
       function () {
         this.classList.add('clicked')
