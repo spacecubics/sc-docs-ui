@@ -35,6 +35,18 @@
   hljs.registerLanguage('rust', require('highlight.js/lib/languages/rust'))
   hljs.registerLanguage('scala', require('highlight.js/lib/languages/scala'))
   hljs.registerLanguage('shell', require('highlight.js/lib/languages/shell'))
+  hljs.registerLanguage('console', function () {
+    return {
+      contains: [
+        { className: 'comment', begin: '^###', end: '$' },
+        {
+          className: 'meta',
+          begin: '^[$#](?= )',
+          starts: { end: '$', subLanguage: 'bash' },
+        },
+      ],
+    }
+  })
   hljs.registerLanguage('sql', require('highlight.js/lib/languages/sql'))
   hljs.registerLanguage('swift', require('highlight.js/lib/languages/swift'))
   hljs.registerLanguage('xml', require('highlight.js/lib/languages/xml'))
