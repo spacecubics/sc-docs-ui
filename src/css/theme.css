@@ -63,22 +63,51 @@
 .toolbar-theme-switcher {
   align-items: center;
   display: flex;
-  gap: 0.35rem;
-  padding: 0 0.5rem;
+  padding: 0 0.25rem;
 }
 
-.toolbar-theme-switcher label {
-  color: var(--toolbar-muted-color);
-  font-size: calc(13 / var(--rem-base) * 1rem);
-}
-
-.toolbar-theme-switcher select {
-  background: var(--panel-background);
-  border: 1px solid var(--panel-border-color);
+.theme-toggle {
+  align-items: center;
+  background: transparent;
+  border: 0;
   border-radius: 0.25rem;
   color: var(--toolbar-font-color);
-  font: inherit;
-  font-size: calc(13 / var(--rem-base) * 1rem);
-  height: calc(var(--toolbar-height) * 0.62);
-  padding: 0 0.35rem;
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0.375rem;
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--link-font-color);
+  outline-offset: -3px;
+}
+
+.theme-toggle:disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+
+.theme-icon {
+  display: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.theme-icon-fill {
+  fill: currentColor;
+  stroke: none;
+}
+
+[data-theme-preference="light"] .theme-icon-light,
+[data-theme-preference="dark"] .theme-icon-dark,
+[data-theme-preference="system"] .theme-icon-system {
+  display: block;
 }

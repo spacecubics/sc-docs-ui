@@ -2,59 +2,64 @@
   'use strict'
 
   var storageKey = 'sc-docs-ui-theme'
-  var values = ['light', 'dark']
-
-  function getStoredPreference () {
-    try {
-      return window.localStorage.getItem(storageKey)
-    } catch (e) {
-      return null
-    }
-  }
-
-  function setStoredPreference (value) {
-    try {
-      if (value === 'light') {
-        window.localStorage.removeItem(storageKey)
-      } else {
-        window.localStorage.setItem(storageKey, value)
-      }
-    } catch (e) {
-    }
-  }
+  var values = ['light', 'dark', 'system']
+  var labels = { light: 'Light', dark: 'Dark', system: 'System' }
+  var systemTheme = window.matchMedia('(prefers-color-scheme: dark)')
+  var preference = getPreference()
+  var button
 
   function getPreference () {
-    var value = getStoredPreference()
-    return values.indexOf(value) === -1 ? 'light' : value
+    try {
+      var value = window.localStorage.getItem(storageKey)
+      return values.indexOf(value) === -1 ? 'system' : value
+    } catch (e) {
+      return 'system'
+    }
   }
 
-  function applyPreference (value) {
-    if (values.indexOf(value) === -1) value = 'light'
-
-    document.documentElement.setAttribute('data-theme', value)
-
-    var select = document.querySelector('[data-theme-switcher]')
-    if (select) select.value = value
+  function nextPreference () {
+    return values[(values.indexOf(preference) + 1) % values.length]
   }
 
-  function setPreference (value) {
-    if (values.indexOf(value) === -1) value = 'light'
-
-    setStoredPreference(value)
-    applyPreference(value)
+  function applyPreference () {
+    var theme = preference === 'system' ? (systemTheme.matches ? 'dark' : 'light') : preference
+    document.documentElement.setAttribute('data-theme', theme)
+    if (!button) return
+    var label = 'Theme: ' + labels[preference] + '. Switch to ' + labels[nextPreference()]
+    button.setAttribute('data-theme-preference', preference)
+    button.setAttribute('aria-label', label)
+    button.setAttribute('title', label)
   }
 
-  applyPreference(getPreference())
-
-  document.addEventListener('DOMContentLoaded', function () {
-    var select = document.querySelector('[data-theme-switcher]')
-
-    applyPreference(getPreference())
-
-    if (!select) return
-
-    select.addEventListener('change', function () {
-      setPreference(select.value)
+  function initialize () {
+    button = document.querySelector('[data-theme-switcher]')
+    applyPreference()
+    if (!button) return
+    button.disabled = false
+    button.addEventListener('click', function () {
+      preference = nextPreference()
+      try {
+        // Persist explicit light as well, so it does not revert to system mode.
+        window.localStorage.setItem(storageKey, preference)
+      } catch (e) {
+      }
+      applyPreference()
     })
+  }
+
+  systemTheme.addEventListener('change', function () {
+    if (preference === 'system') applyPreference()
   })
+  window.addEventListener('storage', function (event) {
+    if (event.key !== storageKey && event.key !== null) return
+    preference = getPreference()
+    applyPreference()
+  })
+
+  applyPreference()
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initialize)
+  } else {
+    initialize()
+  }
 })()
