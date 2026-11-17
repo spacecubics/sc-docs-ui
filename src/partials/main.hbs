@@ -3,7 +3,9 @@
     {{> toolbar}}
     <div class="content">
 {{#if (eq page.layout '404')}}
+      <div class="article-panel">
 {{> article-404}}
+      </div>
 {{else}}
 {{> toc}}
       <div class="article-panel">
