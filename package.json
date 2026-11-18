@@ -45,6 +45,7 @@
     "format": "gulp format",
     "build": "gulp bundle",
     "preview": "gulp preview",
-    "preview:build": "gulp preview:build"
+    "preview:build": "gulp preview:build",
+    "bundle:mega": "pnpm --filter @spacecubics/antora-mega run bundle"
   }
 }

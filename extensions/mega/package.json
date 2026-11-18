@@ -1,0 +1,21 @@
+{
+  "name": "@spacecubics/antora-mega",
+  "version": "1.0.0",
+  "description": "Generate full-document HTML pages for the Space Cubics Antora UI",
+  "license": "MPL-2.0",
+  "repository": "github:spacecubics/sc-docs-ui",
+  "main": "mega.js",
+  "files": [
+    "mega.js",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=24.15.0 <25"
+  },
+  "dependencies": {
+    "@antora/assembler": "1.0.1"
+  },
+  "scripts": {
+    "bundle": "pnpm pack --out ../../build/sc-docs-mega.tgz"
+  }
+}

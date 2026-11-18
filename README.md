@@ -15,6 +15,9 @@ Antora UI for Space Cubics documentation.
 
 3. Build your documentation site with Antora. The bundle is downloaded automatically.
 
+To enable switching between individual pages and the full document, install and configure the optional [MEGA extension](extensions/mega/README.md).
+The mode switch stays hidden when the extension is not enabled or the page has no full-document export.
+
 ## Development
 
 Requires Nix with flakes enabled. Run these commands from the repository root:

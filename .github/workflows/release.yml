@@ -24,6 +24,8 @@ jobs:
       - name: Create GitHub Release and upload asset
         uses: softprops/action-gh-release@v2
         with:
-          files: ui-bundle.zip
+          files: |
+            ui-bundle.zip
+            sc-docs-mega.tgz
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

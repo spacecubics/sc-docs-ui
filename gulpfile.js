@@ -17,7 +17,7 @@ const task = require('./gulp.d/tasks')
 const glob = {
   all: [srcDir, previewSrcDir],
   css: `${srcDir}/css/**/*.css`,
-  js: ['eslint.config.mjs', 'index.js', 'gulpfile.js', 'gulp.d/**/*.js', `${srcDir}/helpers/*.js`, `${srcDir}/js/**/+([^.])?(.bundle).js`],
+  js: ['eslint.config.mjs', 'index.js', 'gulpfile.js', 'gulp.d/**/*.js', 'extensions/*/*.js', `${srcDir}/helpers/*.js`, `${srcDir}/js/**/+([^.])?(.bundle).js`],
 }
 
 const cleanTask = createTask({

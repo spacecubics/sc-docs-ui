@@ -28,13 +28,18 @@
 
   var lastActiveFragment
   var links = {}
+  var headingBaseLevel = headings.some(function (heading) {
+    return heading.nodeName === 'H1'
+  }) ? 1 : 2
   var contentsList = headings.length
     ? headings.reduce(function (accum, heading) {
         var link = document.createElement('a')
         link.textContent = heading.textContent
         links[(link.href = '#' + heading.id)] = link
         var listItem = document.createElement('li')
-        listItem.dataset.level = parseInt(heading.nodeName.slice(1), 10) - 1
+        var depth = parseInt(heading.nodeName.slice(1), 10) - headingBaseLevel
+        listItem.dataset.level = depth + 1
+        listItem.style.setProperty('--toc-depth', depth)
         listItem.appendChild(link)
         accum.appendChild(listItem)
         return accum

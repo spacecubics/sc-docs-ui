@@ -22,9 +22,14 @@ jobs:
       - name: Build Space Cubics UI bundle
         run: nix develop --command pnpm run build
 
+      - name: Package full-document extension
+        run: nix develop --command pnpm run bundle:mega
+
       - name: Upload UI bundle artifact
         uses: actions/upload-artifact@v6
         with:
           name: ui-bundle
-          path: build/ui-bundle.zip
+          path: |
+            build/ui-bundle.zip
+            build/sc-docs-mega.tgz
           if-no-files-found: error

@@ -1,0 +1,88 @@
+.page-mode {
+  flex-shrink: 0;
+  margin: 0 0.5rem;
+  font-size: 0.75rem;
+}
+
+.page-mode-picker {
+  position: relative;
+}
+
+.page-mode summary {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.4rem;
+  list-style: none;
+  white-space: nowrap;
+}
+
+.page-mode summary::-webkit-details-marker {
+  display: none;
+}
+
+.page-mode summary::after {
+  content: "";
+  border-right: 1px solid currentcolor;
+  border-bottom: 1px solid currentcolor;
+  width: 0.35rem;
+  height: 0.35rem;
+  transform: translateY(-0.1rem) rotate(45deg);
+}
+
+.page-mode-picker[open] summary::after {
+  transform: translateY(0.1rem) rotate(225deg);
+}
+
+.page-mode-options {
+  background: var(--panel-background);
+  border: 1px solid var(--panel-border-color);
+  border-radius: 0.3rem;
+  box-shadow: 0 0.2rem 0.6rem #0002;
+  position: absolute;
+  top: calc(100% + 0.25rem);
+  right: 0;
+  min-width: 10rem;
+  padding: 0.25rem;
+}
+
+.page-mode a {
+  align-items: center;
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+  white-space: nowrap;
+}
+
+.page-mode a::before {
+  content: "";
+  width: 0.8rem;
+}
+
+.page-mode a[aria-current]::before {
+  content: "✓";
+}
+
+.page-mode a[aria-current] {
+  color: var(--link-font-color);
+  font-weight: 600;
+}
+
+.page-mode a:focus-visible,
+.page-mode summary:focus-visible {
+  outline: 2px solid var(--link-font-color);
+  outline-offset: -2px;
+}
+
+@media screen and (max-width: 767px) {
+  .toolbar:has(.page-mode) .breadcrumbs,
+  .toolbar:has(.page-mode) .home-link {
+    display: none;
+  }
+}
+
+body:has([data-mega-pages]) article.doc [id] {
+  scroll-margin-top: calc(var(--toolbar-height) + 0.75rem);
+}

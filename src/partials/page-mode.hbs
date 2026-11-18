@@ -1,0 +1,11 @@
+{{#if page.attributes.mega-url}}
+<nav class="page-mode hide-for-print" aria-label="Page mode"{{#if page.attributes.mega}} data-mega-pages="{{page.attributes.mega-pages}}"{{/if}}>
+  <details class="page-mode-picker">
+    <summary>{{#if page.attributes.mega}}Full document{{else}}Individual pages{{/if}}</summary>
+    <div class="page-mode-options">
+      <a href="{{{relativize page.attributes.pages-url}}}" data-page-mode-pages{{#unless page.attributes.mega}} aria-current="page"{{/unless}}>Individual pages</a>
+      <a href="{{{relativize page.attributes.mega-url}}}"{{#if page.attributes.mega}} aria-current="page"{{/if}}>Full document</a>
+    </div>
+  </details>
+</nav>
+{{/if}}

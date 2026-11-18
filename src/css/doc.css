@@ -60,10 +60,10 @@
 }
 
 .doc h1.sect0 {
-  background: var(--abstract-background);
-  font-size: 1.8em;
-  margin: 1.5rem -1rem 0;
-  padding: 0.5rem 1rem;
+  font-size: calc(28 / var(--rem-base) * 1rem);
+  font-weight: var(--alt-heading-font-weight);
+  margin: 3rem 0 0.5rem;
+  break-after: avoid;
 }
 
 .doc h2:not(.discrete) {
